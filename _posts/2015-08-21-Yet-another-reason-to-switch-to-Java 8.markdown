@@ -3,7 +3,6 @@ layout: post
 title:  "Yet another reason to switch to Java 8"
 date:   2015-08-21 14:34:25
 categories: code
-tags: featured
 ---
 Beaucoup de site ont modifié leur support SSL pour utiliser TLS 1.2 à la place de SSL v3.
 Java 6 ne fonctionne plus avec cette configuration et le code suivant ne marche qu'à partir de la version 7 du JRE :
