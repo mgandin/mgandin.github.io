@@ -13,6 +13,7 @@ Je ne vous réexpliquerai pas en détail ce qu'est un stream ou un lambda, [d'au
 
 ### Le FooBarQix
 Alors d'abord, c'est quoi l'exercice de FooBarQix ? Pour ceux qui l'ignore, il s'agit d'un bout de code un peu crétin qui consiste à afficher 100 nombres, mais avec quelques exceptions :
+
  * Quand on tombe sur un nombre qui est un multiple de 3 ou qui contient 3, on affiche FOO
  * Quand on tombe sur un nombre qui est un multiple de 5 ou qui contient 5, on affiche BAR
  * Quand on tombe sur un nombre qui est un multiple de 7 ou qui contient 7, on affiche QIX
@@ -202,6 +203,8 @@ private Map<Integer, String> fooBarQix() {
 Mais ça devient soudainement trop compliqué pour notre petit exercice de FooBarQix. Cependant, sur du code plus gros, c'est assurément une démarche à suivre. 
 
 Mélanger programmation impérative, déclarative et orientée objet est finalement devenu le pain quotidien des développeurs qui utilisent Java 8 ... 
+
+[Le code complet se trouve là](https://gist.github.com/mgandin/e56f811c613be121233c)
 
 
 
