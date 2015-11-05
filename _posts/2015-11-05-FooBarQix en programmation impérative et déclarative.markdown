@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "FooBarQix avec les streams et les lambdas"
-date:   2015-08-28 14:00:00
+date:   2015-11-05 10:00:00
 categories: code
 ---
 
@@ -22,7 +22,7 @@ Alors essayons de faire FooBarQix en Java 8 avec des Streams et des Lambdas.
 ### Commençons ce problème par les multiples de 3, 5 et 7 qui doivent afficher respectivement FOO, BAR et QIX
 Essayons d'implémenter ça dans une approche pré-Java 8, cela donne cette méthode :
 {% highlight java %}
-public String ugly(int toFooBar) {
+public String imperative(int toFooBar) {
     String result = "";
     if(toFooBar % 3 == 0) {
         result += "FOO";
@@ -61,7 +61,7 @@ Et bien sûr, ça se teste comme ça :
 public void should_make_the_foobar_test_with_contains() {
     FooBarModulo fooBarModulo = new FooBarModulo();
     for (int i = 1; i < 101; i++) {
-        Assertions.assertThat(fooBarModulo.func(i)).isEqualTo(fooBarModulo.ugly(i));
+        Assertions.assertThat(fooBarModulo.func(i)).isEqualTo(fooBarModulo.imperative(i));
     }
 }
 {% endhighlight %}
@@ -69,7 +69,7 @@ public void should_make_the_foobar_test_with_contains() {
 ### Et maintenant occupons-nous des nombres qui contiennent 3, 5, 7 et qui doivent afficher FOO, BAR ou QIX
 Dans une approche impérative cela donne ça
 {% highlight java %}
-public String ugly(int toFooBar) {
+public String imperative(int toFooBar) {
     String result = "";
     String integer = String.valueOf(toFooBar);
     for (int j = 0; j < integer.length(); j++) {
@@ -103,6 +103,103 @@ public String func(int numberToFooBar) {
 }
 {% endhighlight %}
 Encore une fois, si on exclue l'initialisation de la Map, le code est assez élégant.
+
+Et ça se teste comme ça :
+{% highlight java %}
+@Test
+public void should_make_the_foobar_test_with_contains() {
+    FooBarContains fooBarContains = new FooBarContains();
+    for (int i = 1; i < 101; i++) {
+        Assertions.assertThat(fooBarContains.func(i)).isEqualTo(fooBarContains.imperative(i));
+    }
+}
+{% endhighlight %}
+
+### Et pour finir
+Rappelez vous, pour l'exercice du FooBarQix, il faut combiner le code qui teste si un nombre est multiple et s'il contient un chiffre, et c'est là que ça devient intéressant.
+En programmation impérative, pré-Java8, sans surprise. Le code décrit pas à pas chacune des instructions, et il suffit de lire le code sans trop réfléchir pour comprendre ce qu'il fait. On obtient quelques choses comme ça :
+{% highlight java %}
+public String imperative(int numberToFoobar) {
+    String result = "";
+    if(numberToFoobar % 3 == 0) {
+        result += "FOO";
+    }
+    if(numberToFoobar % 5 == 0) {
+        result += "BAR";
+    }
+    if(numberToFoobar % 7 == 0) {
+        result += "QIX";
+    }
+    String toFooBar = String.valueOf(numberToFoobar);
+    for (int j = 0; j < toFooBar.length(); j++) {
+        char element = toFooBar.charAt(j);
+        if(element == '3')
+            result += "FOO";
+        if(element == '5')
+            result += "BAR";
+        if(element == '7')
+            result += "QIX";
+    }
+    return result.isEmpty() ? toFooBar : result;
+}
+{% endhighlight %}
+
+En utilisant les Streams et le lambdas, et en partant vers une programmation plus déclarative, on se retrouve avec du code plus abstrait, il faut comprendre ce qu'il y a derrière les mots "filter", "map" et "collect" mais Heureusement, ces opérations sont assez claires, et rendent finalement le code plus simple. 
+{% highlight java %}
+public String func(int numberToFooBar) {
+    Map<Integer, String> foobar = new HashMap<>();
+    foobar.put(3, "FOO");
+    foobar.put(5, "BAR");
+    foobar.put(7, "QIX");
+
+    String result = foobar.keySet().stream()
+            .filter(toReplace -> numberToFooBar % toReplace == 0)
+            .map(foobar::get)
+            .collect(joining());
+
+    String toFooBar = String.valueOf(numberToFooBar);
+    result += toFooBar.chars()
+            .mapToObj(integerAsChar -> foobar.getOrDefault(getNumericValue(integerAsChar), ""))
+            .collect(joining());
+
+    return result.isEmpty() ? String.valueOf(toFooBar) : result;
+}
+{% endhighlight %}
+Là où il y a encore à redire, c'est dans la connexion entre l'instruction qui vérifie le multiple et la suivante, Java ne propose malheureusement rien pour combiner ces deux bouts de code. On peut toujours les séparer dans plusieurs méthodes de classe :
+{% highlight java %}
+public String func(int numberToFooBar) {
+    Map<Integer, String> foobar = fooBarQix();
+
+    String result = contains(numberToFooBar, foobar);
+
+    String toFooBar = String.valueOf(numberToFooBar);
+    result += contains(foobar, toFooBar);
+    return result.isEmpty() ? toFooBar : result;
+}
+
+private String contains(Map<Integer, String> foobar, String toFooBar) {
+    return toFooBar.chars()
+                .mapToObj(integerAsChar -> foobar.getOrDefault(getNumericValue(integerAsChar), ""))
+                .collect(joining());
+}
+
+private String contains(int numberToFooBar, Map<Integer, String> foobar) {
+    return foobar.keySet().stream()
+                .filter(toReplace -> numberToFooBar % toReplace == 0)
+                .map(foobar::get)
+                .collect(joining());
+}
+
+private Map<Integer, String> fooBarQix() {
+    Map<Integer, String> foobar = new HashMap<>();
+    foobar.put(3, "FOO");
+    foobar.put(5, "BAR");
+    foobar.put(7, "QIX");
+    return foobar;
+}
+{% endhighlight %}
+Ca devient soudainement trop compliqué pour notre petit exercice de FooBarQix, mais sur du code plus gros, c'est assurément une démarche à suivre. Mélanger programmation impérative, déclarative et orientée objet est finalement devenu le pain quotidien des développeurs qui utilisent Java 8 ... 
+
 
 
 
