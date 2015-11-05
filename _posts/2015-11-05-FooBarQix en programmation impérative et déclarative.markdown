@@ -6,6 +6,7 @@ categories: code
 ---
 
 Cela fait déjà un an et demi que je suis (enfin) passé à Java 8 et, ma foi, je ne regrette pas le voyage. Java a (enfin) une librairie de Collection digne de ce nom (La librairie de Collection était déjà bien faite, mais il lui manquait des features qui existent déjà depuis de nombreuses années chez de nombreux langages). 
+
 Mais surtout ça permet de ressortir ce bon vieux débat entre la programmation déclarative et impérative, notamment grace à l'apport des Streams et des lambdas au langage Java.
 
 Je ne vous réexpliquerai pas en détail ce qu'est un stream ou un lambda, [d'autres l'ont déjà fait mieux que moi](https://www.parleys.com/tutorial/tout-ce-que-vous-avez-toujours-voulu-savoir-sur-les-lambdas-et-plus-encore-part-1), mais j'ai plutôt envie de prendre un petit exemple avec l'exercice du FooBarQix pour illustrer ça. 
