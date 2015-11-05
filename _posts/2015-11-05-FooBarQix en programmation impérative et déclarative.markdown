@@ -172,7 +172,7 @@ Là où il y a encore à redire, c'est dans la connexion entre l'instruction qui
 public String func(int numberToFooBar) {
     Map<Integer, String> foobar = fooBarQix();
 
-    String result = contains(numberToFooBar, foobar);
+    String result = modulo(numberToFooBar, foobar);
 
     String toFooBar = String.valueOf(numberToFooBar);
     result += contains(foobar, toFooBar);
@@ -185,7 +185,7 @@ private String contains(Map<Integer, String> foobar, String toFooBar) {
                 .collect(joining());
 }
 
-private String contains(int numberToFooBar, Map<Integer, String> foobar) {
+private String modulo(int numberToFooBar, Map<Integer, String> foobar) {
     return foobar.keySet().stream()
                 .filter(toReplace -> numberToFooBar % toReplace == 0)
                 .map(foobar::get)
