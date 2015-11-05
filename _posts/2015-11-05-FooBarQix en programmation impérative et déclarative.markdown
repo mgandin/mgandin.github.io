@@ -17,7 +17,7 @@ Alors d'abord, c'est quoi l'exercice de FooBarQix ? Pour ceux qui l'ignore, il s
  * Quand on tombe sur un nombre qui est un multiple de 3 ou qui contient 3, on affiche FOO
  * Quand on tombe sur un nombre qui est un multiple de 5 ou qui contient 5, on affiche BAR
  * Quand on tombe sur un nombre qui est un multiple de 7 ou qui contient 7, on affiche QIX
- * Et c'est cumulatif (par exemple pour pour 35 on affiche BARQIXFOOBAR)
+ * Et c'est cumulatif (par exemple pour 35 on affiche BARQIXFOOBAR)
 
 Il y a quelques années, cet exercice était utilisé par Facebook pour faire un premier tri dans les candidatures pour un poste de développeur. Depuis, on retrouve surtout cet exercice sur des posts de blogs pour illustrer quelques techniques de programmation, même si, FooBarQix n'apporte pas grand chose en terme de valeur.
 
