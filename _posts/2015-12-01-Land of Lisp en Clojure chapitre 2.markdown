@@ -40,6 +40,7 @@ Je fait ensuite à peu près la même chose pour un chiffre plus petit, en chang
 {% endhighlight %}
 
 Ensuite je joue (mettons que le programme doit deviner 42) :
+
  * (guess) me retourne 51
  * J'appelle (smaller) qui me retourne 26
  * J'appelle (bigger) qui me retourne 39, puis une seconde fois pour me retourner 45
