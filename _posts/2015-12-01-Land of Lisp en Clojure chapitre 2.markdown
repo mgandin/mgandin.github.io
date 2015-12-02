@@ -9,11 +9,11 @@ Je ne sais pas pour vous, mais je n'ai pas gardé un souvenir folichon de mes co
 
 Pour cela j'ai décidé de commencer [« Land Of Lisp »](http://landoflisp.com/), dont la lecture se révèle être, chose rare pour un livre d'informatique, assez fun. Afin de corser un peu le challenge, j'ai aussi décidé de reprendre les exercices du livre en Clojure, qui, vous allez vite le voir, diffère un peu du Lisp.
 
-Après un premier chapitre introductif, [« Land Of Lisp »](http://landoflisp.com/) démarre sur quelques bases du langage, en proposant de développer un petit jeu où il faut faire deviner un chiffre par le programme tout en lui en indiquant si le chiffre en question est plus grand ou plus petit que celui qui est proposé.
+Après un premier chapitre introductif, [« Land Of Lisp »](http://landoflisp.com/) démarre sur quelques bases du langage, en proposant de développer un petit jeu où il faut faire deviner un nombre entre 1 et 100 par le programme tout en lui en indiquant si le nombre en question est plus grand ou plus petit que celui qui est proposé.
 
 La solution en Lisp se trouve [par ici](http://landoflisp.com/guess.lisp) et voici comment je me suis débrouillé pour refaire ce petit jeu en Clojure. 
 
-Pour commencer je définis deux variables qui stockent les chiffres min et max du jeu :
+Pour commencer je définis deux variables qui stockent les nombres min et max du jeu :
 {% highlight clojure %}
 (def *small* 1)
 (def *big* 100)
@@ -25,14 +25,14 @@ Ensuite j'écris une fonction qui devine un nombre (on ajoute *big*  et *small*
   (Math/round (double(/ (+ *big* *small*) 2))))
 {% endhighlight %}
 
-Puis j'ajoute une fonction qui propose un chiffre plus grand en changeant *small* par le résultat de l'appel de la fonction guess (et je rappelle alors guess pour proposer un chiffre) :
+Puis j'ajoute une fonction qui propose un nombre plus grand en changeant *small* par le résultat de l'appel de la fonction guess (et je rappelle alors guess pour proposer un nombre) :
 {% highlight clojure %}
 (defn bigger []
   (def *small*(guess))
   (guess))
 {% endhighlight %}
 
-Je fait ensuite à peu près la même chose pour un chiffre plus petit, en changeant cette fois-ci *big* :
+Je fait ensuite à peu près la même chose pour un nombre plus petit, en changeant cette fois-ci *big* :
 {% highlight clojure %}
 (defn smaller []
   (def *big* (guess))
