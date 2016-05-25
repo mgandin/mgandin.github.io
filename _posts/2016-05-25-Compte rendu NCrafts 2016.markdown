@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "Compte-rendu NCrafts 2016"
+date:   2016-05-25 10:00:00
+categories: code
+---
+![Ncrafts 2016 !](/assets/article_images/ncraft2016.jpg)
+Jeudi 12 mai, j'ai suis allé à la conférence [Ncrafts 2016](http://ncrafts.io), dont le sujet est le Software Craftsmanship. Ca se déroulait Quai de Grenelle à Paris et voici un petit compte-rendu de la journée.
+
+Après un premier café matinal et la désormais traditionnelle distribution de goodies - cette fois-ci emballés dans un tote bag qui rendrait presque ma profession trendy – je me retrouve au premier rang pour voir « The Long Road », la keynote de [Sandro Mancuco](https://twitter.com/sandromancuso). Généralement les keynotes me laissent indifférent, mais il faut bien reconnaître que Sandro est un très bon orateur et son discours fait mouche chez moi sur pas mal de points concernant la carrière d'un développeur. Après nous avoir rappelé quelques généralités - notre carrière et le travail que nous faisons ne sont pas la même chose, que cette carrière est une échelle dont chaque job serait un barreau, que si l'on monte souvent il est normal de parfois descendre et qu'il n'y a pas qu'un seul chemin dans une carrière - on rentre un peu plus dans le concret, après quelques exemples d'annonces d'emploi hilarantes, avec de bonnes idées pour le recrutement :
+
+  * Chaque nouveau job doit être une négociation, en tant que développeur j'y mets toute mon expertise et j'attends quelques choses en retour (en plus de mon salaire) de mon employeur. Par exemple, quand Sandro Mancuco a déménagé en Angleterre il a choisi une petit boite de logiciel où il a pu perfectionner son anglais 
+  * Ne faites pas coder sur du papier pour des entretiens techniques mais avec un IDE, et si possible sur du code qui est le plus proche de votre base de code
+  * Toute entreprise qui demande un soumission de code pour entretien technique doit donner en retour un feedback propre de ce code
+
+Je suis à une conférence sur le Software Craftsmanship, il est donc normal que j'aille écrire du code, je pars donc faire l'atelier [Extreme Carpaccio](https://github.com/dlresende/extreme-carpaccio), animé par [Diego Lemos](https://twitter.com/dlresende) et [Arnauld Loyer](https://twitter.com/aloyer), dont le but consiste à implémenter une solution logicielle par des incréments qui sont à la fois les plus petits possibles et aussi ceux qui rapportent le plus de valeur. Dans l'équipe où j'étais, nous avons choisi une stratégie prudente, résultat pas d'argent perdu mais nous n'avons pas été ceux qui en ont gagné le plus. Intéressant feedback et comme j'ai récupéré le code, je vais essayer d'organiser cet atelier en interne.
+
+Après la pause déjeuner, j'enchaine avec la présentation de [Ludwine Probst](https://twitter.com/nivdul) qui est allée rencontrer différentes communautés de développeuses et de développeurs au Népal, au Cambodge, en Indonésie, en Malaisie et à Myanmar. Une expérience visiblement très enrichissante à en juger par l’enthousiasme de l'oratrice. Ludwine Probst a partagé l'ensemble de ses témoignages sur le site [Tech Beyond Borders](http://techbeyondborders.com/).
+
+Je vais ensuite faire un tour du côté de l'atelier Double Loop TDD with Specflow animé par [Cédric Rup](https://twitter.com/CedricRup), [Christophe Thibaut](https://twitter.com/ToF_) et [Julien Jakubowski](https://twitter.com/jak78). Après un long rappel de TDD et les premières spécifications de ce que l'on doit implémenter nous passons à ce que je retiendrai de cette session, une excellente session de [Mob Programming](http://mobprogramming.org/). Comment ça se déroule ? Prenez un ordinateur et projeter le code au mur, une personne, le conducteur, a pour rôle d'écrire le code, et les autres, les navigateurs, donnent les instructions pour implémenter le code. Bien sûr, une séance de Mob Programming implique un certain effort de coordination, mais j'y vois un bon moyen de faire gagner du focus à une équipe tout en augmentant sa cohésion. 
+
+Je change de salle pour voir la présentation de [Carlo Pescio](https://twitter.com/CarloPescio), « On Growth and Software », une session très (trop) théorique à mon goût, j'y attendais aussi quelques retours d'expérience alors que j'ai surtout eu droit à des exemples, très instructifs, en Scala et en Haskell pour modéliser un domaine métier à base de types et de paradigmes fonctionnels. Je n'aurais pas été contre un petit tour dans un gros domaine métier écrit en Scala qui tourne en production.
+
+Je termine avec la keynote de fin, « The Art of visualising Software Architecture », présentée par [Simon Brown](https://twitter.com/simonbrown). J'avoue être un peu moins intéressé par ces aspects de modélisation mais il faut bien reconnaître que son modèle Conteneur / Composant / Code est un bon moyen de synthétiser certains aspects de nos architectures logicielles, pour notamment présenter une vue d'avion de notre code à des non-techs. 
+
+J'ai du travail à finir, je n'assiste donc pas à la journée du 13 Avril, mais je reste en début de soirée pour déguster une bière artisanale fabriquée pour l'occasion, une raison supplémentaire pour surveiller le programme des prochaines éditions de cette conférence.
